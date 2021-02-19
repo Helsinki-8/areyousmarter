@@ -1,5 +1,5 @@
 [
-  {
+    {
     "question" : "Siapakah nama presiden yang kedua indonesia?",
     "content" : [
         "BJ. Habibie",
@@ -8,25 +8,205 @@
         "Susilo Bambang Yudhoyono"
     ],
     "correct" : 1
-},
-{
-    "question" : "Bencana tsunami di aceh terjadi pada tahun?",
+    },
+    {
+        "question" : "Bencana tsunami di aceh terjadi pada tahun?",
+        "content" : [
+            "2003",
+            "2004",
+            "2005",
+            "2006"
+        ],
+        "correct" : 1
+    },
+    {
+    "question" : "Perusahaan besar di indonesia yang membuat pesawat terbang adalah?",
     "content" : [
-        "2003",
-        "2004",
-        "2005",
-        "2006"
+        "PT INKA ",
+        "PT TOYOTA",
+        "PT PELNI",
+        "PT DIRGANTARA INDONESIA"
     ],
-    "correct" : 1
-},
-{
-  "question" : "Bencana tsunami di aceh terjadi pada tahun?",
-  "content" : [
-      "2003",
-      "2004",
-      "2005",
-      "2006"
-  ],
-  "correct" : 1
-}
+    "correct" : 3
+    },
+    {
+        "question" : "Nama lain dari istilah Taksonomi adalah?",
+        "content" : [
+            "Pengecualian",
+            "Penggabungan",
+            "Pengelompokan",
+            "Pemisahan"
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "Mata uang dari negara malaysia adalah?",
+        "content" : [
+            "Rupiah",
+            "Peso",
+            "Yen",
+            "Ringgit"
+        ],
+        "correct" : 3
+    },
+    {
+        "question" : "Hubungan timbal balik antara makhluk hidup dan lingkungannya disebut?",
+        "content" : [
+            "Komunitas",
+            "Ekosistem",
+            "Ekosistem",
+            "Ekosistem"
+        ],
+        "correct" : 1
+    },
+    {
+        "question" : "Kota cirebon terletak pada provinsi?",
+        "content" : [
+            "Jawa Tengah",
+            "Jawa Timur",
+            "Jawa Barat",
+            "Aceh"
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "Nama kabinet menteri pada era presiden Susilo Bambang Yudhoyono adalah?",
+        "content" : [
+            "Indonesia Bersatu",
+            "Kabinet Kerja",
+            "Gotong Royong",
+            "Persatuan"
+        ],
+        "correct" : 0
+    },
+    {
+        "question" : "Golongan Darah Terbanyak didunia adalah?",
+        "content" : [
+            "A",
+            "B",
+            "AB",
+            "O"
+        ],
+        "correct" : 3
+    },
+    {
+        "question" : "Karakter robot utama dalam film Transformers ialah?",
+        "content" : [
+            "optimus prime",
+            "bumble bee",
+            "megatron",
+            "starscream"
+        ],
+        "correct" : 0
+    },
+    {
+        "question" : "Juara Piala Eropa tahun 2016 ialah?",
+        "content" : [
+            "spanyol",
+            "prancis",
+            "jerman",
+            "portugal"
+        ],
+        "correct" : 3
+    },
+    {
+        "question" : "Berikut ini yang artinya tutup/keluar, kecuali?",
+        "content" : [
+            "quit",
+            "close",
+            "stop",
+            "exit"
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "KRL bergerak ke arah timur dari barat dengan kecepatan 70 km per jam. Bila angin dari arah berlawan berembus dengan kecematan 40 km per jam, maka ke mana arah asapnya?",
+        "content" : [
+            "Timur",
+            "Barat",
+            "Atas",
+            "Salah semua"
+        ],
+        "correct" : 3
+    },
+    {
+    "question" : "Seorang pria pergi ke pasar untuk membeli dua liter susu, lima jeruk, pepaya, satu lusin telur, dua timun, dan dua terong atau terung. Total ada berapa jumlah buah yang ia beli?",
+    "content" : [
+        "Enam",
+        "Delapan",
+        "Sepuluh",
+        "Salah semua"
+    ],
+    "correct" : 2
+    },
+    {
+        "question" : "Dalam suatu kolam terdapat 12 ekor ikan. Suatu hari 5 ikan dimakan bangau, 3 tenggelam, dan satu dimakan kucing. Berapa sisanya?",
+        "content" : [
+            "Enam",
+            "Sepuluh",
+            "Tiga",
+            "Salah semua"
+        ],
+        "correct" : 0
+    },
+    {
+        "question" : "Sebuah lubang di tanah memiliki kedalaman 100 meter dengan dimensi ukuran panjang 10 meter dan lebar 10 meter. Berapa banyak tanah yang ada di dalamnya?",
+        "content" : [
+            "10.000 meter kubik",
+            "100 meter kubik",
+            "10 meter kubik",
+            "salah semua"
+        ],
+        "correct" : 3
+    },
+    {
+        "question" : "",
+        "content" : [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "",
+        "content" : [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "",
+        "content" : [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "",
+        "content" : [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct" : 2
+    },
+    {
+        "question" : "",
+        "content" : [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct" : 2
+    }
 ]
