@@ -13,7 +13,7 @@ Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
 Vue.use(new VueSocketIO({
-  connection: 'https://game-api.helsinki-fox.tech',
+  connection: 'https://group8-api.helsinki-fox.tech',
   vuex: {
     store,
     actionPrefix: 'SOCKET_',

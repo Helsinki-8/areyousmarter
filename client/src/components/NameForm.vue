@@ -33,12 +33,13 @@ export default {
     name: 'NameForm',
     data() {
       return {
-        playerName
+        playerName : ''
       }
     },
     methods: {
       postLogin(){
         this.$socket.emit('newPlayer',{ playerName : this.playerName , score : 0 });
+        this.$store.commit('setName', this.playerName)
         this.$router.push('/rooms');
       }
     },

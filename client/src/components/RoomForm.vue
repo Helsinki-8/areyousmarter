@@ -1,11 +1,11 @@
 <template>
     <div class="p-3 mx-auto rounded bg-gradient" style="max-width: 400px; text-align:center" id="roomFormContainer">
-        <form id="room-form" v-on:submit.prevent="postLogin" action="#" method="post">
+        <form id="room-form" v-on:submit.prevent="createRoom" action="#" method="post">
           <br />
           <div class="mb-3 form-floating">
-            <!-- <label for="roomName" class="col-form-label font-weight-bold text-primary">Your Name?</label> -->
             <input
               type="text"
+              v-model="roomNameInput"
               class="form-control form-control-lg  bg-secondary form-lg rounded"
               placeholder=""
               id="roomName"
@@ -26,6 +26,18 @@
 </template>
 <script>
 export default {
-    name: 'RoomForm'
+    name: 'RoomForm',
+    data () {
+      return {
+        roomNameInput : ''
+      }
+    },
+    methods: {
+      createRoom(){
+        this.$socket.emit('createRoom',{ roomName : this.roomNameInput });
+        this.$store.commit('setRoom', this.roomNameInput)
+        this.$router.push('/lobby');
+      }
+    }
 }
 </script>
