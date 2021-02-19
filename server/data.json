@@ -790,13 +790,183 @@
         "answer" : 0
     },
     {
-        "question" : "",
+        "question" : "Minuman terfavorit di dunia adalah?",
         "content" : [
-            "",
-            "",
-            "",
-            ""
+            "Kopi",
+            "Sirup",
+            "Jus",
+            "Teh"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Orang yang suka mengoleksi prangko disebut?",
+        "content" : [
+            "Kolektor",
+            "Klepto",
+            "Hobi",
+            "Filatelli"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Tari kecak adalah tari yang berasal dari daerah?",
+        "content" : [
+            "Medan",
+            "Manado",
+            "Papua",
+            "Bali"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Ledakan bintang di galaksi disebut?",
+        "content" : [
+            "Supernova",
+            "Armagedon",
+            "Superbang",
+            "Bigbang"
         ],
         "answer" : 2
+    },
+    {
+        "question" : "Senjata yang dipakai Indonesia pada masa penjajahan adalah?",
+        "content" : [
+            "Senapan",
+            "Pencak Silat",
+            "Machine gun",
+            "Bambu Runcing"
+        ],
+        "answer" : 2
+    },
+    {
+        "question" : "Serangga yang memiliki rasa solidaritas tinggi adalah?",
+        "content" : [
+            "Laba-laba",
+            "Belalang",
+            "Lebah",
+            "Semut"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Air terjun tertinggi di dunia terletak di negara?",
+        "content" : [
+            "Amerika",
+            "Belanda",
+            "Inggris",
+            "Venezuela"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Binatang yang suka makan biji kopi dan kotorannya bisa dijadikan kopi adalah?",
+        "content" : [
+            "Musang",
+            "Tupai",
+            "Luwak",
+            "Bajing"
+        ],
+        "answer" : 2
+    },
+    {
+        "question" : "Jenis batuan terkeras adalah?",
+        "content" : [
+            "Giok",
+            "Bacan",
+            "Zamrud",
+            "Berlian"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Mie favorit Jepang yaitu?",
+        "content" : [
+            "Mie Ramen",
+            "Mie Ayam",
+            "Indomie",
+            "Mie yamin"
+        ],
+        "answer" : 0
+    },
+    {
+        "question" : "Burung yang menjadi lambang kantor pos Indonesia adalah burung?",
+        "content" : [
+            "Gagak",
+            "Walet",
+            "Dara",
+            "Merpati"
+        ],
+        "answer" : 0
+    },
+    {
+        "question" : "Benua beku adalah benua",
+        "content" : [
+            "Antartika",
+            "Asia",
+            "Samudera",
+            "Eropa"
+        ],
+        "answer" : 0
+    },
+    {
+        "question" : "Mamalia tertinggi adalah?",
+        "content" : [
+            "Gajah",
+            "Jerapah",
+            "T-Rex",
+            "Sapi"
+        ],
+        "answer" : 1
+    },
+    {
+        "question" : "Bahan yang digunakan sebagai pengembang adonan kue adalah?",
+        "content" : [
+            "Soda kue",
+            "Telur",
+            "Ragi",
+            "cream"
+        ],
+        "answer" : 2
+    },
+    {
+        "question" : "Alat pernafasan belalang adalah?",
+        "content" : [
+            "Paru-paru",
+            "Insang",
+            "Kulit",
+            "Trakea"
+        ],
+        "answer" : 3
+    },
+    {
+        "question" : "Indonesia dijajah Jepang selama?",
+        "content" : [
+            "3,5 tahun",
+            "4 tahun",
+            "2,5 tahun",
+            "3 tahun"
+        ],
+        "answer" : 0
+    },
+    {
+        "question" : "Alat untuk mengukur gempa bumi disebut?",
+        "content" : [
+            "Barometer",
+            "Seismografi",
+            "Ombrometer",
+            "Termometer"
+        ],
+        "answer" : 1
+    },
+    {
+        "question" : "Penduduk asli Australia adalah suku?",
+        "content" : [
+            "Aborigin",
+            "Dayak",
+            "Indian",
+            "Badui"
+        ],
+        "answer" : 0
     }
 ]

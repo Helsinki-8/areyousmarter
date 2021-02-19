@@ -18,7 +18,7 @@
               <h1>
                 {{question.question}}
               </h1>
-              <div v-if="playerAnswer.length === 0" class="mt-10 mx-auto" style="max-width: 300px;">
+              <div v-if="playerAnswer = -1" class="mt-10 mx-auto" style="max-width: 300px;">
                 <button @click.prevent="setPlayerAnswer(0)" class="btn py-3 btn-primary btn-round btn-lg text-dark text-lg btn-block"
                   >
                 {{question.content[0]}}
@@ -38,7 +38,7 @@
               </div>
 
               <!--if already answering but timer is not up-->
-              <div v-if="playerAnswer.length > 0" class="mt-10 mx-auto" style="max-width: 300px;">
+              <div v-if="playerAnswer > -1" class="mt-10 mx-auto" style="max-width: 300px;">
                 <button disabled class="btn py-3 btn-primary btn-round btn-lg text-dark text-lg btn-block"
                   >
                 {{question.content[0]}}
@@ -62,7 +62,29 @@
         </div>
     </div>
     <div class="container" v-else>
-      <h1>finish</h1>
+      <div 
+        v-if="winner === playerName"
+        class="text-center mx-auto" style="max-width: 300px;">
+        <h1>You Win!</h1>
+        <lottie-player class="mx-auto" src="https://assets6.lottiefiles.com/packages/lf20_mscnbzxs.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
+        <button @click.prevent="backToHome" class="btn py-3 btn-success btn-round btn-lg text-dark text-lg btn-block"
+        >
+        back to Home
+        </button>
+      </div>
+    <!--end winner-->
+    
+    <!--loss notif-->
+      <div 
+        v-if="winner !== playerName"
+        class="text-center mx-auto" style="max-width: 300px;">
+        <h1>You Lose!</h1>
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_wfiktcpm.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
+        <button @click.prevent="backToHome" class="btn py-3 btn-success btn-round btn-lg text-dark text-lg btn-block"
+        >
+        back to Home
+        </button>
+      </div>
     </div>
 </template>
 <script>
@@ -74,7 +96,7 @@ export default {
   },
   data () {
     return {
-      playerAnswer: '',
+      playerAnswer: -1,
       timer: 10
     }
   },
@@ -83,6 +105,7 @@ export default {
 
     },
     setPlayerAnswer (val) {
+      // this.playerAnswer = val;
       if (val === this.question.answer) {
         this.$socket.emit('correctAnswer', this.playerName, this.room)
       }
@@ -91,6 +114,9 @@ export default {
   computed: {
     question () {
       return this.$store.state.currentQuestion
+    },
+    winner () {
+      return this.$store.state.winner
     },
     playerName () {
       return this.$store.state.playerName

@@ -7,7 +7,7 @@ import VueSocketIO from 'vue-socket.io'
 Vue.config.productionTip = false
 
 Vue.use(new VueSocketIO({
-  connection: 'http://localhost:3010/',
+  connection: 'https://group8-api.helsinki-fox.tech/',
   vuex: {
     store,
     actionPrefix: 'SOCKET_',
