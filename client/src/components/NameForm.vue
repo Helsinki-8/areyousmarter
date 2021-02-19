@@ -3,7 +3,6 @@
       <div class="justify-content-center">
         <lottie-player class="mx-auto" src="https://assets2.lottiefiles.com/packages/lf20_h8lk5ow8.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
       </div>
-      
       <form id="login-form" v-on:submit.prevent="postLogin" action="#" method="post">
         <br />
         <div class="mb-3 form-floating">
@@ -30,18 +29,18 @@
 </template>
 <script>
 export default {
-    name: 'NameForm',
-    data() {
-      return {
-        playerName : ''
-      }
-    },
-    methods: {
-      postLogin(){
-        this.$socket.emit('newPlayer',{ playerName : this.playerName , score : 0 });
-        this.$store.commit('setName', this.playerName)
-        this.$router.push('/rooms');
-      }
-    },
+  name: 'NameForm',
+  data () {
+    return {
+      playerName: ''
+    }
+  },
+  methods: {
+    postLogin () {
+      this.$socket.emit('newPlayer', { playerName: this.playerName, score: 0 })
+      this.$store.commit('setName', this.playerName)
+      this.$router.push('/rooms')
+    }
+  }
 }
 </script>

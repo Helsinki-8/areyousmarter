@@ -7,9 +7,8 @@
           <p class="fw-bold fs-3 p-2 text-dark">
             Players:
           </p>
-          <MemberRoom 
-              v-for='member in players'
-              :key="member"
+          <MemberRoom v-for='(member, index) in players'
+              :key="index"
               :member="member"
           ></MemberRoom>
         </div>
@@ -34,26 +33,26 @@ import WavyBg from '../components/WavyBg'
 export default {
   name: 'LobbyPage',
   components: {
-      MemberRoom, WavyBg
+    MemberRoom, WavyBg
   },
   props: ['isRoomMaster'],
-  computed : {
-    room(){
-      return this.$store.state.room;
+  computed: {
+    room () {
+      return this.$store.state.room
     },
-    players(){
-      return this.$store.state.players;
+    players () {
+      return this.$store.state.players
     }
   },
-  methods:{
-    startGame(){
-      console.log(this.members);
+  methods: {
+    startGame () {
+      this.$socket.emit('playerStartGame', this.room)
     }
   },
   watch: {
     // whenever question changes, this function will run
     players: function () {
-      console.log(players)
+      console.log(this.players)
     }
   }
 }

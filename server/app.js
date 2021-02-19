@@ -9,7 +9,9 @@ const rooms = [
   {
     id: 'default',
     isStarted: false,
-    scores: []
+    questionId: 0,
+    scores: [],
+    maxScore : 100
   }
 ]
 
@@ -31,7 +33,6 @@ io.on('connection', (socket) => {
     socket.emit('getAllRooms', filteredRooms)
   })
     // socket.emit("init", message)
-  
     socket.on('joinRoom', (user, roomId) => {
       let room = rooms.find( el => el.id === roomId)
       room.scores.push({
@@ -79,6 +80,7 @@ io.on('connection', (socket) => {
       console.log(rooms)
   
       io.in(roomId).emit('updateScores', room.scores)
+      io.in(roomId).emit('getQuestion', questions[room.questionId])
       io.in(roomId).emit('startGame')
   
     })
@@ -88,17 +90,22 @@ io.on('connection', (socket) => {
       let score = room.scores.find( el => el.id === socket.id)
   
       if (score) {
-        score.score += 100
+        score.score += 10
       } else {
         room.scores.push({
           id: socket.id,
           user: userId,
-          score: 100
+          score: 10
         })
       }
-  
-      console.log(room.scores)
+
+      if(score.score >= room.maxScore){
+        io.in(roomId).emit('gameFinish', score);
+      }
+
       io.in(roomId).emit('updateScores', room.scores)
+      room.questionId = Math.floor(Math.random() * questions.length - 1);
+      io.in(roomId).emit('getQuestion', questions[room.questionId])
     })
   
     socket.on('playerWin', (userId, roomId) => {

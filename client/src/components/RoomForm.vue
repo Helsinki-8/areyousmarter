@@ -12,7 +12,6 @@
               name="roomName"
             />
           </div>
-  
           <div class="mb-3 p-3">
             <input
               type="submit"
@@ -26,18 +25,18 @@
 </template>
 <script>
 export default {
-    name: 'RoomForm',
-    data () {
-      return {
-        roomNameInput : ''
-      }
-    },
-    methods: {
-      createRoom(){
-        this.$socket.emit('createRoom',{ roomName : this.roomNameInput });
-        this.$store.commit('setRoom', this.roomNameInput)
-        this.$router.push('/lobby');
-      }
+  name: 'RoomForm',
+  data () {
+    return {
+      roomNameInput: ''
     }
+  },
+  methods: {
+    createRoom () {
+      this.$socket.emit('createRoom', { roomName: this.roomNameInput })
+      this.$store.commit('setRoom', this.roomNameInput)
+      this.$router.push('/lobby')
+    }
+  }
 }
 </script>
