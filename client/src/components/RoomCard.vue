@@ -5,7 +5,7 @@
                 <p class="fw-bold fs-3 p-2">
                     {{room.id}}
                 </p>
-                <hr class="my-4">
+                <hr color="white"/>
                 <MemberRoom v-for='(member, index) in members'
                     :key="index"
                     :member="member"

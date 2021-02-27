@@ -9,7 +9,7 @@
           <p for="playerName" class="font-weight-bold text-success display-4">Your Name?</p>
           <input
             type="text"
-            class="form-control form-control-lg  bg-light form-lg rounded"
+            class="form-control form-control-lg text-primary bg-light form-lg rounded"
             placeholder=""
             id="playerName"
             name="playerName"

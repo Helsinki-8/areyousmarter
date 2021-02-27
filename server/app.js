@@ -10,8 +10,8 @@ const rooms = [
     id: 'default',
     isStarted: false,
     questionId: 0,
-    scores: [],
-    maxScore : 100
+    maxScore : 100,
+    scores: []
   }
 ]
 
@@ -19,13 +19,12 @@ const newPlayerMessage = "a new challenger has entered the game!"
 
 const users = []
 
-
 io.on('connection', (socket) => {
   let ID = socket.id
   socket.on('newPlayer', function (payload) {
     payload.id = ID
     users.push(payload)
-    io.emit('getAllUsers', users) // send to other users expect the client
+    io.emit('getAllUsers', users) // send to other users except the client
     io.emit('newPlayer', { message: newPlayerMessage })
     let filteredRooms = rooms.filter(room => {
       return !room.isStarted
@@ -46,7 +45,7 @@ io.on('connection', (socket) => {
       io.in(roomId).emit('listPlayer',room.scores);
     })
   
-    socket.on('createRoom', (user, roomId) => {
+    socket.on('createRoom', ({user, roomId}) => {
       console.log('create room', roomId)
       let room = rooms.find( el => el.id === roomId)
   
@@ -54,6 +53,8 @@ io.on('connection', (socket) => {
         rooms.push({
           id: roomId,
           isStarted: false,
+          questionId: 0,
+          maxScore: 100,
           scores: [{
             id: socket.id,
             user: user,
@@ -69,6 +70,10 @@ io.on('connection', (socket) => {
       }
   
       socket.join(roomId)
+      let filteredRooms = rooms.filter(room => {
+        return !room.isStarted
+      })
+      socket.broadcast.emit('getAllRooms',filteredRooms)
       socket.emit('initQuiz', questions)
     })
   
@@ -113,7 +118,7 @@ io.on('connection', (socket) => {
   
       room.isStarted = false
       room.scores = []
-  
+
       socket.to(roomId).emit('playerLose')
     })
 })

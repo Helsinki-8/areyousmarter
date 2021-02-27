@@ -15,10 +15,10 @@
           <div class="col-md-8 col-8">
             <p>{{timer}}</p>
             <div class="text-center">
-              <h1>
+              <h1 @change="resetAnswer">
                 {{question.question}}
               </h1>
-              <div v-if="playerAnswer = -1" class="mt-10 mx-auto" style="max-width: 300px;">
+              <div v-if="playerAnswer === -1" class="mt-10 mx-auto" style="max-width: 300px;">
                 <button @click.prevent="setPlayerAnswer(0)" class="btn py-3 btn-primary btn-round btn-lg text-dark text-lg btn-block"
                   >
                 {{question.content[0]}}
@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="container" v-else>
-      <div 
+      <div
         v-if="winner === playerName"
         class="text-center mx-auto" style="max-width: 300px;">
         <h1>You Win!</h1>
@@ -73,13 +73,12 @@
         </button>
       </div>
     <!--end winner-->
-    
     <!--loss notif-->
-      <div 
+      <div
         v-if="winner !== playerName"
         class="text-center mx-auto" style="max-width: 300px;">
         <h1>You Lose!</h1>
-        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_wfiktcpm.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_wfiktcpm.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
         <button @click.prevent="backToHome" class="btn py-3 btn-success btn-round btn-lg text-dark text-lg btn-block"
         >
         back to Home
@@ -102,13 +101,18 @@ export default {
   },
   methods: {
     RunTimer () {
-
     },
     setPlayerAnswer (val) {
-      // this.playerAnswer = val;
+      // this.playerAnswer = val
       if (val === this.question.answer) {
         this.$socket.emit('correctAnswer', this.playerName, this.room)
       }
+    },
+    backToHome () {
+      this.$router.push('/rooms')
+    },
+    resetAnswer () {
+      this.playerAnswer = -1
     }
   },
   computed: {

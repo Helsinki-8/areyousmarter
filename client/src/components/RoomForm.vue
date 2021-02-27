@@ -6,7 +6,7 @@
             <input
               type="text"
               v-model="roomNameInput"
-              class="form-control form-control-lg  bg-secondary form-lg rounded"
+              class="form-control form-control-lg text-primary bg-secondary form-lg rounded"
               placeholder=""
               id="roomName"
               name="roomName"
@@ -33,9 +33,17 @@ export default {
   },
   methods: {
     createRoom () {
-      this.$socket.emit('createRoom', { roomName: this.roomNameInput })
+      this.$socket.emit('createRoom', {
+        user: this.playerName,
+        roomId: this.roomNameInput
+      })
       this.$store.commit('setRoom', this.roomNameInput)
       this.$router.push('/lobby')
+    }
+  },
+  computed: {
+    playerName () {
+      return this.$store.state.playerName
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
     <div>
         <WavyBg></WavyBg>
-        <h3>Welcome {{playerName}}</h3>
+        <h3 class="text-light display-4">Welcome {{playerName}}</h3>
         <RoomForm></RoomForm>
         <div class="container">
-            <img src="happy.svg" v-if="rooms.length === 0" alt="My Happy SVG" />
+            <!-- <img src="happy.svg" v-if="rooms.length === 0" alt="My Happy SVG" /> -->
             <div class="row">
                 <RoomCard v-for='(room, index) in rooms'
                     :key="index"

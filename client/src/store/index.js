@@ -16,7 +16,8 @@ export default new Vuex.Store({
     room: '',
     players: [],
     isFinish: false,
-    winner: ''
+    winner: '',
+    lose: false
   },
   mutations: {
     SOCKET_getAllRooms (state, rooms) {
@@ -33,6 +34,7 @@ export default new Vuex.Store({
       state.players = scores
     },
     SOCKET_getQuestion (state, question) {
+      console.log('ini dari getquestion')
       state.currentQuestion = question
     },
     SOCKET_gameFinish (state, score) {
@@ -43,7 +45,7 @@ export default new Vuex.Store({
       router.push('/game')
     },
     SOCKET_playerLose (state) {
-      // ga tau diisi kemana
+      state.lose = true
     },
     setName (state, name) {
       state.playerName = name
