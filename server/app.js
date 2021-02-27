@@ -12,6 +12,7 @@ const rooms = [
     questionId: 0,
     maxScore : 100,
     scores: []
+    // score is arr of obj with key id, user, & score
   }
 ]
 
@@ -20,17 +21,23 @@ const newPlayerMessage = "a new challenger has entered the game!"
 const users = []
 
 io.on('connection', (socket) => {
+  console.log(socket.id, 'ini isi socket<<<<<<<<<<<<')
   let ID = socket.id
-  socket.on('newPlayer', function (payload) {
-    payload.id = ID
-    users.push(payload)
-    io.emit('getAllUsers', users) // send to other users except the client
-    io.emit('newPlayer', { message: newPlayerMessage })
-    let filteredRooms = rooms.filter(room => {
-      return !room.isStarted
+
+    socket.on('newPlayer', function (payload) {
+      payload.id = ID
+      users.push(payload)
+      io.emit('getAllUsers', users) // send to other users except the client
+      io.emit('newPlayer', { message: newPlayerMessage })
+      let filteredRooms = rooms.filter(room => room.isStarted === false)
+      socket.emit('getAllRooms', filteredRooms)
     })
-    socket.emit('getAllRooms', filteredRooms)
-  })
+
+    socket.on('backToHome', () => {
+      let filteredRooms = rooms.filter(room => room.isStarted === false)
+      socket.emit('getAllRooms', filteredRooms)
+    })
+
     // socket.emit("init", message)
     socket.on('joinRoom', (user, roomId) => {
       let room = rooms.find( el => el.id === roomId)
@@ -39,7 +46,6 @@ io.on('connection', (socket) => {
         user: user,
         score: 0
       })
-  
       socket.join(roomId)
       socket.emit('initQuiz', questions)
       io.in(roomId).emit('listPlayer',room.scores);
@@ -48,7 +54,6 @@ io.on('connection', (socket) => {
     socket.on('createRoom', ({user, roomId}) => {
       console.log('create room', roomId)
       let room = rooms.find( el => el.id === roomId)
-  
       if (!room) {
         rooms.push({
           id: roomId,
@@ -68,11 +73,11 @@ io.on('connection', (socket) => {
           score: 0
         })
       }
-  
+
       socket.join(roomId)
-      let filteredRooms = rooms.filter(room => {
-        return !room.isStarted
-      })
+      room = rooms.find( el => el.id === roomId)
+      io.in(roomId).emit('listPlayer',room.scores);
+      let filteredRooms = rooms.filter(room => room.isStarted === false)
       socket.broadcast.emit('getAllRooms',filteredRooms)
       socket.emit('initQuiz', questions)
     })

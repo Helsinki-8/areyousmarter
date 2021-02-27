@@ -52,6 +52,7 @@ export default new Vuex.Store({
     setName (state, name) {
       state.playerName = name
     },
+    // ascascasc
     setRoom (state, roomName) {
       state.room = roomName
     },

@@ -100,16 +100,21 @@ export default {
     }
   },
   methods: {
-    RunTimer () {
-    },
+    // RunTimer () {
+    //   let countdown = 10
+    //   setInterval(() => {
+    //     this.timer = countdown
+    //     countdown -= 1
+    //   }, 1000)
+    // },
     setPlayerAnswer (val) {
-      // this.playerAnswer = val
       this.$store.commit('setAnswer')
       if (val === this.question.answer) {
         this.$socket.emit('correctAnswer', this.playerName, this.room)
       }
     },
     backToHome () {
+      this.$socket.emit('backToHome')
       this.$router.push('/rooms')
     },
     resetAnswer () {
