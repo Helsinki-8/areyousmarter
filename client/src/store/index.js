@@ -17,8 +17,8 @@ export default new Vuex.Store({
     players: [],
     isFinish: false,
     winner: '',
-    lose: false,
-    answered: false
+    answered: false,
+    timer: 10
   },
   mutations: {
     SOCKET_getAllRooms (state, rooms) {
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       router.push('/game')
     },
     SOCKET_playerLose (state) {
-      state.lose = true
+      // state.lose = true
     },
     setName (state, name) {
       state.playerName = name
@@ -61,9 +61,24 @@ export default new Vuex.Store({
     },
     setAnswer (state) {
       state.answered = true
+    },
+    setTimer (state, payload) {
+      state.timer = payload
     }
   },
   actions: {
+    setTimer (context, payload) {
+      let countdown = 10
+      setInterval(() => {
+        console.log(this.timer)
+        context.commit('setTimer', countdown)
+        countdown -= 1
+        if (countdown <= -1 && this.state.answered) {
+          this.$socket.emit('timesUp', this.state.room)
+          countdown = 10
+        }
+      }, 1000)
+    }
   },
   modules: {
   }

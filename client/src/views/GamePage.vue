@@ -15,7 +15,7 @@
           <div class="col-md-8 col-8">
             <p>{{timer}}</p>
             <div class="text-center">
-              <h1 @change="resetAnswer">
+              <h1>
                 {{question.question}}
               </h1>
               <div v-if="!answered" class="mt-10 mx-auto" style="max-width: 300px;">
@@ -95,18 +95,21 @@ export default {
   },
   data () {
     return {
-      playerAnswer: -1,
-      timer: 10
     }
   },
   methods: {
-    // RunTimer () {
-    //   let countdown = 10
-    //   setInterval(() => {
-    //     this.timer = countdown
-    //     countdown -= 1
-    //   }, 1000)
-    // },
+    RunTimer () {
+      let countdown = 10
+      setInterval(() => {
+        console.log(this.timer)
+        this.timer = countdown
+        countdown -= 1
+        if (countdown === -1 && this.answered) {
+          this.$socket.emit('timesUp', this.room)
+          countdown = 10
+        }
+      }, 1000)
+    },
     setPlayerAnswer (val) {
       this.$store.commit('setAnswer')
       if (val === this.question.answer) {
@@ -116,9 +119,6 @@ export default {
     backToHome () {
       this.$socket.emit('backToHome')
       this.$router.push('/rooms')
-    },
-    resetAnswer () {
-      this.playerAnswer = -1
     }
   },
   computed: {
@@ -142,7 +142,24 @@ export default {
     },
     answered () {
       return this.$store.state.answered
+    },
+    timer () {
+      return this.$store.state.timer
     }
+  },
+  created () {
+    this.$store.dispatch('setTimer')
   }
+  // created () {
+  //   let countdown = 10
+  //   setInterval(() => {
+  //     console.log(this.timer)
+  //     this.timer = countdown
+  //     countdown -= 1
+  //     if (countdown === -1) {
+  //       countdown = 10
+  //     }
+  //   }, 1000)
+  // }
 }
 </script>

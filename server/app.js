@@ -90,6 +90,7 @@ io.on('connection', (socket) => {
       console.log(rooms)
   
       io.in(roomId).emit('updateScores', room.scores)
+      room.questionId = Math.floor(Math.random() * questions.length);
       io.in(roomId).emit('getQuestion', questions[room.questionId])
       io.in(roomId).emit('startGame')
   
@@ -114,7 +115,15 @@ io.on('connection', (socket) => {
       }
 
       io.in(roomId).emit('updateScores', room.scores)
-      room.questionId = Math.floor(Math.random() * questions.length - 1);
+      room.questionId = Math.floor(Math.random() * questions.length);
+      io.in(roomId).emit('getQuestion', questions[room.questionId])
+    })
+
+    socket.on('timesUp', (roomId) => {
+      console.log('timesup triggered')
+      let room = rooms.find( el => el.id === roomId)
+      io.in(roomId).emit('updateScores', room.scores)
+      room.questionId = Math.floor(Math.random() * questions.length);
       io.in(roomId).emit('getQuestion', questions[room.questionId])
     })
   
