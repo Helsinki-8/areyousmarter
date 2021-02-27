@@ -18,7 +18,7 @@
               <h1 @change="resetAnswer">
                 {{question.question}}
               </h1>
-              <div v-if="playerAnswer === -1" class="mt-10 mx-auto" style="max-width: 300px;">
+              <div v-if="!answered" class="mt-10 mx-auto" style="max-width: 300px;">
                 <button @click.prevent="setPlayerAnswer(0)" class="btn py-3 btn-primary btn-round btn-lg text-dark text-lg btn-block"
                   >
                 {{question.content[0]}}
@@ -38,7 +38,7 @@
               </div>
 
               <!--if already answering but timer is not up-->
-              <div v-if="playerAnswer > -1" class="mt-10 mx-auto" style="max-width: 300px;">
+              <div v-if="answered" class="mt-10 mx-auto" style="max-width: 300px;">
                 <button disabled class="btn py-3 btn-primary btn-round btn-lg text-dark text-lg btn-block"
                   >
                 {{question.content[0]}}
@@ -104,6 +104,7 @@ export default {
     },
     setPlayerAnswer (val) {
       // this.playerAnswer = val
+      this.$store.commit('setAnswer')
       if (val === this.question.answer) {
         this.$socket.emit('correctAnswer', this.playerName, this.room)
       }
@@ -133,6 +134,9 @@ export default {
     },
     isFinish () {
       return this.$store.state.isFinish
+    },
+    answered () {
+      return this.$store.state.answered
     }
   }
 }
